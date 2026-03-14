@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>给陕西的妳 · 生日快乐</title>
     <style>
-        /* 全局样式 - 粉色调 + 香槟金边框 + 深色字体 */
+        /* 全局样式 */
         * {
             margin: 0;
             padding: 0;
@@ -25,11 +25,9 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
-            position: relative;
-            z-index: 1;
         }
         
-        /* 加载页面 */
+        /* 加载页 */
         .loading-page {
             text-align: center;
             padding: 60px 20px;
@@ -69,15 +67,6 @@
             color: #b8860b;
         }
         
-        .dot-animation span:nth-child(1) { animation-delay: 0s; }
-        .dot-animation span:nth-child(2) { animation-delay: 0.5s; }
-        .dot-animation span:nth-child(3) { animation-delay: 1s; }
-        
-        @keyframes dot {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
-        }
-        
         /* 卡片样式 */
         .card {
             background: rgba(255, 240, 245, 0.9);
@@ -94,7 +83,6 @@
             font-size: 32px;
             margin-bottom: 30px;
             text-align: center;
-            position: relative;
             color: #b8860b;
         }
         
@@ -108,18 +96,6 @@
             border-radius: 2px;
         }
         
-        h3 {
-            font-size: 24px;
-            margin: 20px 0;
-            color: #b8860b;
-        }
-        
-        p {
-            color: #4a4a4a;
-            font-size: 16px;
-            line-height: 1.8;
-        }
-        
         /* 地图区域 */
         .map-container {
             height: 300px;
@@ -128,14 +104,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
-            margin-bottom: 20px;
             border: 1px solid #d4af37;
-            color: #4a4a4a;
-        }
-        
-        .map-placeholder {
-            text-align: center;
         }
         
         .city-tag {
@@ -144,9 +113,7 @@
             background: rgba(255, 255, 255, 0.6);
             border-radius: 50px;
             margin: 10px;
-            font-size: 20px;
             border: 1px solid #d4af37;
-            color: #4a4a4a;
         }
         
         .distance-line {
@@ -169,53 +136,16 @@
             border-radius: 15px;
             padding: 20px 15px;
             text-align: center;
-            transition: transform 0.3s;
             border: 2px solid #d4af37;
-            color: #4a4a4a;
-        }
-        
-        .photo-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(210, 180, 140, 0.3);
-        }
-        
-        .photo-item img {
-            width: 100%;
-            max-height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 12px;
-            border: 1px solid #d4af37;
         }
         
         .photo-memory {
             font-size: 16px;
             font-weight: bold;
-            margin: 8px 0 4px;
             color: #b8860b;
         }
         
-        .photo-date {
-            font-size: 13px;
-            color: #4a4a4a;
-            opacity: 0.8;
-            margin-bottom: 8px;
-        }
-        
-        .photo-thought {
-            font-size: 13px;
-            font-style: italic;
-            background: rgba(255, 255, 255, 0.5);
-            padding: 6px;
-            border-radius: 8px;
-            color: #4a4a4a;
-        }
-        
         /* 时间线 */
-        .timeline {
-            margin: 30px 0;
-        }
-        
         .timeline-item {
             padding: 20px;
             margin-bottom: 20px;
@@ -228,11 +158,6 @@
             font-size: 18px;
             font-weight: bold;
             color: #b8860b;
-            margin-bottom: 8px;
-        }
-        
-        .timeline-content {
-            color: #4a4a4a;
         }
         
         /* 愿望清单 */
@@ -252,70 +177,15 @@
             font-size: 18px;
             cursor: pointer;
             transition: all 0.3s;
-            flex: 1 1 auto;
             min-width: 150px;
-            color: #4a4a4a;
         }
         
         .wish-item:hover {
             background: #d4af37;
-            color: #fff;
-            transform: scale(1.05);
+            color: white;
         }
         
-        .wish-item.selected {
-            background: #b8860b;
-            color: #fff;
-            border-color: #b8860b;
-        }
-        
-        .wish-detail-page {
-            display: none;
-            background: rgba(255, 240, 245, 0.95);
-            border: 2px solid #d4af37;
-            border-radius: 20px;
-            padding: 30px;
-            margin-top: 20px;
-            color: #4a4a4a;
-        }
-        
-        .wish-detail-content {
-            min-height: 200px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 15px;
-            margin: 20px 0;
-        }
-        
-        .back-from-wish {
-            background: #d4af37;
-            color: #fff;
-            border: none;
-            padding: 10px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-        
-        .back-from-wish:hover {
-            background: #b8860b;
-        }
-        
-        /* 倒计时 */
-        .countdown {
-            font-size: 56px;
-            margin: 30px 0 10px;
-            font-weight: bold;
-            color: #b8860b;
-        }
-        
-        .countdown-label {
-            font-size: 18px;
-            color: #4a4a4a;
-        }
-        
-        /* 音乐播放器 - 修复版 */
+        /* 音乐播放器 */
         .music-player {
             position: fixed;
             bottom: 30px;
@@ -325,57 +195,49 @@
             border-radius: 50px;
             display: flex;
             align-items: center;
-            justify-content: center;
             cursor: pointer;
             z-index: 1000;
-            transition: all 0.3s;
             border: 2px solid #b8860b;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             color: white;
             font-weight: bold;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
 
         .music-player:hover {
             background: #b8860b;
-            transform: scale(1.05);
         }
 
         .music-icon {
             font-size: 22px;
             margin-right: 10px;
         }
-
-        #musicText {
-            font-size: 16px;
-        }
         
-        /* 彩蛋主页面 */
+        /* ========== 彩蛋页面 - 修复下滑问题 ========== */
         #secret-page {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            min-height: 100vh;
+            height: 100vh;  /* 占满整个视口 */
             background: rgba(255, 240, 245, 0.98);
             z-index: 2000;
-            overflow-y: auto;
+            overflow-y: auto;  /* 允许垂直滚动 */
             padding: 20px;
         }
         
         .secret-container {
             max-width: 800px;
-            margin: 40px auto;
+            margin: 20px auto;  /* 上下留边距，便于滚动看到底部 */
             padding: 40px 30px;
             background: white;
             border: 3px solid #d4af37;
             border-radius: 30px;
-            color: #4a4a4a;
             box-shadow: 0 10px 40px rgba(210, 180, 140, 0.3);
         }
         
         .page-content {
-            min-height: 400px;
+            min-height: 300px;
             padding: 30px;
             background: #fff9fb;
             border-radius: 20px;
@@ -402,19 +264,16 @@
             border-radius: 50px;
             cursor: pointer;
             font-size: 18px;
-            transition: all 0.3s;
             font-weight: bold;
         }
         
         .page-btn:hover {
             background: #b8860b;
-            transform: scale(1.05);
         }
         
         .page-btn:disabled {
             background: #ccc;
             cursor: not-allowed;
-            transform: none;
         }
         
         .page-indicator {
@@ -427,7 +286,7 @@
         
         /* 底部图片 */
         .bottom-image {
-            margin-top: 40px;
+            margin: 40px 0;
             text-align: center;
         }
         
@@ -440,25 +299,23 @@
         /* 骰子 */
         .dice-container {
             text-align: center;
-            margin: 30px 0;
-            position: relative;
+            margin: 40px 0;
         }
         
         .dice {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             background: #d4af37;
-            border-radius: 15px;
+            border-radius: 20px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 40px;
+            font-size: 48px;
             font-weight: bold;
             color: white;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(210, 180, 140, 0.4);
-            border: 2px solid #b8860b;
+            border: 3px solid #b8860b;
             margin: 0 auto;
         }
         
@@ -468,35 +325,31 @@
         
         .dice.used {
             background: #ccc;
-            border-color: #999;
             cursor: not-allowed;
         }
         
         .dice-message {
-            margin-top: 10px;
+            margin-top: 15px;
             color: #b8860b;
-            font-size: 14px;
+            font-size: 16px;
         }
         
         /* 返回按钮 */
         .back-link {
             display: inline-block;
-            margin: 20px 0;
+            margin: 30px 0 20px;
             color: white;
-            text-decoration: none;
-            font-size: 18px;
             background: #d4af37;
-            padding: 12px 35px;
+            padding: 15px 40px;
             border-radius: 50px;
-            transition: all 0.3s;
-            border: none;
+            font-size: 18px;
             cursor: pointer;
+            border: none;
             font-weight: bold;
         }
         
         .back-link:hover {
             background: #b8860b;
-            transform: scale(1.05);
         }
         
         /* 金色按钮 */
@@ -508,28 +361,23 @@
             border-radius: 50px;
             font-size: 18px;
             cursor: pointer;
-            transition: all 0.3s;
-            margin: 10px;
             font-weight: bold;
-            box-shadow: 0 4px 15px rgba(210, 180, 140, 0.3);
+            margin: 20px 0;
         }
         
         .gold-button:hover {
             background: #b8860b;
-            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
-    <!-- 音乐播放器 - 修复版 -->
+    <!-- 音乐播放器 -->
     <div class="music-player" id="musicToggle">
-        <span class="music-icon" id="musicIcon">🔊</span>
+        <span class="music-icon" id="musicIcon">🔈</span>
         <span id="musicText">点击播放 · 求婚</span>
     </div>
-    <audio id="bgMusic" loop preload="auto">
-        <!-- 备用音乐链接1 - 纯音乐《求婚》 -->
+    <audio id="bgMusic" loop>
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-        <!-- 备用音乐链接2 - 如果上面不行用这个 -->
         <source src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" type="audio/ogg">
     </audio>
 
@@ -540,7 +388,7 @@
             <div class="loading-page">
                 <div class="heart">❤️</div>
                 <div class="loading-text">从威斯康辛到陕西</div>
-                <div class="loading-text" style="font-size: 16px;">正在穿越 10,980 公里</div>
+                <div class="loading-text">正在穿越 10,980 公里</div>
                 <div class="dot-animation">
                     <span>.</span><span>.</span><span>.</span>
                 </div>
@@ -568,46 +416,42 @@
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-date">2025年3月末</div>
-                        <div class="timeline-content">逆水寒里相遇，结为情缘</div>
+                        <div>逆水寒里相遇，结为情缘</div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-date">2025年5-6月</div>
-                        <div class="timeline-content">加了微信，从此每天聊天</div>
+                        <div>加了微信，从此每天聊天</div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-date">2026年1月19日</div>
-                        <div class="timeline-content">在一起了 ❤️</div>
+                        <div>在一起了 ❤️</div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-date">2026年3月28日</div>
-                        <div class="timeline-content">第一个生日，在一起68天</div>
+                        <div>第一个生日，在一起68天</div>
                     </div>
                 </div>
             </div>
 
-            <!-- 游戏回忆（放截图的地方） -->
+            <!-- 游戏回忆 -->
             <div class="card">
                 <h2>🎮 我们的游戏时光</h2>
                 <div class="photo-grid">
                     <div class="photo-item">
-                        <img src="images/game1.jpg" alt="逆水寒" onerror="this.style.display='none'; this.parentElement.innerHTML='📸 逆水寒截图'">
                         <div class="photo-memory">逆水寒 · 初遇</div>
-                        <div class="photo-date">2025.03</div>
+                        <div>2025.03</div>
                     </div>
                     <div class="photo-item">
-                        <img src="images/game2.jpg" alt="王者" onerror="this.style.display='none'; this.parentElement.innerHTML='🎮 王者截图'">
                         <div class="photo-memory">一起打王者</div>
-                        <div class="photo-date">每天</div>
+                        <div>每天</div>
                     </div>
                     <div class="photo-item">
-                        <img src="images/game3.jpg" alt="聊天" onerror="this.style.display='none'; this.parentElement.innerHTML='💬 聊天记录'">
                         <div class="photo-memory">每天都在说话</div>
-                        <div class="photo-date">2025-2026</div>
+                        <div>2025-2026</div>
                     </div>
                     <div class="photo-item">
-                        <img src="images/game4.jpg" alt="听歌" onerror="this.style.display='none'; this.parentElement.innerHTML='🎵 一起听歌'">
-                        <div class="photo-memory">分享耳机</div>
-                        <div class="photo-date">深夜</div>
+                        <div class="photo-memory">一起听歌</div>
+                        <div>深夜</div>
                     </div>
                 </div>
             </div>
@@ -616,7 +460,7 @@
             <div class="card">
                 <h2>🎂 生日快乐</h2>
                 <div style="padding:20px; background:rgba(255,255,255,0.5); border-radius:15px;">
-                    <p style="font-size:20px; line-height:1.8;">
+                    <p style="font-size:18px; line-height:1.8;">
                         亲爱的，这是我们在一起的第68天。<br><br>
                         从逆水寒到每天聊天，从麦迪逊到陕西，<br>
                         你已经是我生活中最重要的人。<br><br>
@@ -631,30 +475,28 @@
             <div class="card">
                 <h2>🤝 见面后要做的事</h2>
                 <div class="wish-box">
-                    <div class="wish-item" onclick="alert('一起吃顿饭，慢慢聊慢慢吃')">一起吃顿饭 🍽️</div>
-                    <div class="wish-item" onclick="alert('一起过下一次生日，买一个大蛋糕')">一起过生日 🎂</div>
+                    <div class="wish-item" onclick="alert('一起吃顿饭，慢慢聊')">一起吃顿饭 🍽️</div>
+                    <div class="wish-item" onclick="alert('一起过下一次生日')">一起过生日 🎂</div>
                     <div class="wish-item" onclick="alert('去K歌，听你唱歌')">一起去K歌 🎤</div>
-                    <div class="wish-item" onclick="alert('去游乐园，坐摩天轮')">去游乐园 🎡</div>
+                    <div class="wish-item" onclick="alert('去游乐园坐摩天轮')">去游乐园 🎡</div>
                     <div class="wish-item" onclick="alert('放烟花，在烟花下拥抱')">放烟花 🎆</div>
-                    <div class="wish-item" onclick="alert('一起做饭，你做陕西面食')">一起做饭 👩‍🍳</div>
+                    <div class="wish-item" onclick="alert('一起做饭')">一起做饭 👩‍🍳</div>
                 </div>
             </div>
 
-            <!-- 秘密入口按钮 - 修复版 -->
+            <!-- 秘密入口 -->
             <div style="text-align:center; margin:40px 0;">
                 <button class="gold-button" onclick="openSecretPage()">🔐 秘密入口 · 点击进入</button>
             </div>
         </div>
     </div>
 
-    <!-- 彩蛋页面 - 修复版 -->
+    <!-- 彩蛋页面 - 修复下滑问题 -->
     <div id="secret-page">
         <div class="secret-container">
             <h2 style="color:#b8860b;">💌 给妳的悄悄话</h2>
             
-            <div id="pageContent" class="page-content" style="white-space: pre-line;">
-                <!-- 第1页内容会通过JavaScript填入 -->
-            </div>
+            <div id="pageContent" class="page-content"></div>
             
             <div id="pageIndicator" class="page-indicator">第 1 / 3 页</div>
             
@@ -663,55 +505,55 @@
                 <button class="page-btn" id="nextPage" onclick="changePage(1)">下一页 →</button>
             </div>
             
-            <!-- 底部图片区域 - 默认隐藏，最后一页显示 -->
+            <!-- 底部图片（最后一页显示） -->
             <div id="bottomImage" class="bottom-image" style="display: none;">
-                <img src="images/last.jpg" alt="给妳的图" onerror="this.style.display='none'">
+                <img src="images/last.jpg" alt="送你的图" onerror="this.style.display='none'">
                 <p style="margin-top:10px; color:#b8860b;">送给你 ❤️</p>
             </div>
             
-            <!-- 骰子区域 - 默认隐藏，最后一页显示 -->
+            <!-- 骰子（最后一页显示） -->
             <div id="diceArea" class="dice-container" style="display: none;">
                 <div class="dice" id="dice" onclick="rollDice()">?</div>
                 <div class="dice-message">点击掷骰子，只能点2次哦</div>
             </div>
             
             <!-- 返回按钮 -->
-            <div style="text-align:center; margin-top:30px;">
+            <div style="text-align:center;">
                 <button class="back-link" onclick="closeSecretPage()">返回主页面</button>
             </div>
         </div>
     </div>
 
     <script>
-        // ==================== 彩蛋页面内容 ====================
+        // ==================== 彩蛋内容 ====================
         const secretPages = [
             `从逆水寒里偶然相遇的那天起，我就知道，这个游戏不一样了。
-        
+
 2025年3月末，我们在逆水寒里结为情缘。那时候只是偶尔上线，看看风景，做做任务。我没想到，这会是一切的开始。
-        
+
 后来加了微信，从那天起，每一天都在聊天。游戏、王者、听歌、哲学、历史、抽象小视频、吃的、梦……什么都聊。连我自己都愣住了，原来我们已经聊了这么久，说了这么多话。
-        
+
 你总说我是个大大咧咧的人，什么都不往心里去。是啊，我确实是这样。但和你有关的每一件事，我都记得。`,
         
             `2026年1月19日，麦迪逊时间晚上8点多，我们在一起了。
-        
+
 虽然隔着整个太平洋，你在白天，我在黑夜，但感觉你就在身边。
-        
+
 这两个多月，每一天都很开心。虽然不能见面，虽然有时差，但我们总是能找到时间说话。你心思细腻敏感，我大大咧咧，但我们互补得刚刚好。
-        
+
 我想过很多次，见面后要做什么。一起吃顿饭，一起过下一次生日，一起去K歌，去游乐园，放烟花，一起做饭。`,
         
             `今天是2026年3月28日，你的生日。
-        
+
 第一个不能陪你过的生日，但不会是最后一个。
-        
+
 等我们见面，等我们不再异地，以后的每一个生日，我都要在你身边。
-        
+
 给你买蛋糕，给你唱生日歌，给你吹蜡烛，给你拍好多好多照片。
-        
+
 等我，很快的。
-        
-爱你的 [你的名字]
+
+爱你的 孙培源
 2026.03.13 于威斯康辛·麦迪逊`
         ];
         
@@ -720,12 +562,14 @@
         let diceClickCount = 0;
         const diceNumbers = [521, 1314, 520, 131.4];
         
-        // ==================== 打开/关闭彩蛋页面 ====================
+        // ==================== 打开/关闭彩蛋 ====================
         function openSecretPage() {
             document.getElementById('main-page').style.display = 'none';
             document.getElementById('secret-page').style.display = 'block';
             currentPage = 1;
             updatePageContent();
+            // 滚动到顶部
+            document.getElementById('secret-page').scrollTop = 0;
         }
         
         function closeSecretPage() {
@@ -733,11 +577,9 @@
             document.getElementById('main-page').style.display = 'block';
         }
         
-        // ==================== 翻页功能 ====================
+        // ==================== 翻页 ====================
         function updatePageContent() {
-            const pageContent = document.getElementById('pageContent');
-            pageContent.innerText = secretPages[currentPage - 1];
-            
+            document.getElementById('pageContent').innerText = secretPages[currentPage - 1];
             document.getElementById('pageIndicator').innerText = `第 ${currentPage} / ${totalPages} 页`;
             
             document.getElementById('prevPage').disabled = (currentPage === 1);
@@ -758,10 +600,12 @@
             if (newPage >= 1 && newPage <= totalPages) {
                 currentPage = newPage;
                 updatePageContent();
+                // 滚动到顶部，方便阅读新的一页
+                document.getElementById('secret-page').scrollTop = 0;
             }
         }
         
-        // ==================== 骰子功能 ====================
+        // ==================== 骰子 ====================
         function rollDice() {
             if (diceClickCount >= 2) {
                 alert('你已经点过两次啦！');
@@ -780,8 +624,8 @@
             }
         }
         
-        // ==================== 音乐播放器 - 修复版 ====================
-        function setupMusicPlayer() {
+        // ==================== 音乐 ====================
+        function setupMusic() {
             const music = document.getElementById('bgMusic');
             const toggle = document.getElementById('musicToggle');
             const icon = document.getElementById('musicIcon');
@@ -802,32 +646,29 @@
                             text.innerText = '播放中 · 求婚';
                         })
                         .catch(e => {
-                            alert('点击播放音乐～ 如果没声音，试试点第二次');
-                            console.log('音乐播放被阻止，等待用户点击');
+                            alert('点击播放音乐～');
                         });
                 }
                 isPlaying = !isPlaying;
             });
         }
         
-        // ==================== 加载页动画 ====================
-        function setupLoadingPage() {
-            const loadingPage = document.querySelector('.loading-page');
+        // ==================== 加载页 ====================
+        function setupLoading() {
+            const loading = document.querySelector('.loading-page');
             setTimeout(() => {
-                loadingPage.style.transition = 'opacity 2s';
-                loadingPage.style.opacity = '0';
+                loading.style.transition = 'opacity 2s';
+                loading.style.opacity = '0';
                 setTimeout(() => {
-                    loadingPage.style.display = 'none';
+                    loading.style.display = 'none';
                 }, 2000);
             }, 3000);
         }
         
-        // ==================== 页面初始化 ====================
+        // ==================== 初始化 ====================
         document.addEventListener('DOMContentLoaded', function() {
-            setupMusicPlayer();
-            setupLoadingPage();
-            
-            // 初始显示第1页内容（虽然彩蛋页面隐藏着）
+            setupMusic();
+            setupLoading();
             document.getElementById('pageContent').innerText = secretPages[0];
         });
     </script>
